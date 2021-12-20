@@ -8,36 +8,36 @@
 
   <body>
 
-    <button id="btn-login">Connect Metamask</button>
+    <button id="btn-login">Login & Sign</button>
     <button id="btn-logout">Logout</button>
 <div id="box"></div>
     <script>
       // connect to Moralis server
       Moralis.initialize("YIdrcwtkaJoepg5rXSimkVlHeXEMY2gk8EXiLXhJ");
-      Moralis.serverURL = "https://vo3fmhitkt6r.grandmoralis.com:2053/server";
+      Moralis.serverURL = "https://vo3fmhitkt6r.usemoralis.com:2053/server";
 
       // add from here down
-async function login() {
-  let user = Moralis.User.current();
-  if (!user) {
-    user = await Moralis.authenticate({signingMessage: "Amp address active"});
-  }
-  console.log("logged in user:", user);
-  var div = document.getElementById('box');
- div.innerHTML = "Address logged.";
-}
+     async function login() {
+       let user = Moralis.User.current();
+       if (!user) {
+         user = await Moralis.authenticate({signingMessage: "Amp address active"});
+       }
+       console.log("logged in user:", user);
+       var div = document.getElementById('box');
+      div.innerHTML = "Address logged.";
+     }
 
-async function logOut() {
-  await Moralis.User.logOut();
-  console.log("logged out");
-}
+     async function logOut() {
+       await Moralis.User.logOut();
+       console.log("logged out");
+     }
 
-document.getElementById("btn-login").onclick = login;
-document.getElementById("btn-logout").onclick = logOut;
-</script>
+     document.getElementById("btn-login").onclick = login;
+     document.getElementById("btn-logout").onclick = logOut;
+   </script>
 
 
-</body>
+ </body>
 
 
 </html>
