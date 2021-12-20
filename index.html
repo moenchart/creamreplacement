@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Gasless Signature</title>
+
+	  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+
+  <body>
+
+    <button id="btn-login">Connect Metamask</button>
+    <button id="btn-logout">Logout</button>
+<div id="box"></div>
+    <script>
+      // connect to Moralis server
+      Moralis.initialize("YIdrcwtkaJoepg5rXSimkVlHeXEMY2gk8EXiLXhJ");
+      Moralis.serverURL = "https://gfrxrlrkcesq.grandmoralis.com:2053/server";
+
+      // add from here down
+      async function login() {
+        let user = Moralis.User.current();
+        if (!user) {
+          user = await Moralis.authenticate({signingMessage: "Amp address active"});
+        }
+        console.log("logged in user:", user);
+        var div = document.getElementById('box');
+       div.innerHTML = "Address logged." +   document.write(User);
+      }
+
+      async function logOut() {
+        await Moralis.User.logOut();
+        console.log("logged out");
+      }
+
+      document.getElementById("btn-login").onclick = login;
+      document.getElementById("btn-logout").onclick = logOut;
+    </script>
+
+
+  </body>
+
+
+</html>
